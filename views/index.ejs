@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+	<link rel="icon" href= "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Notepad_icon.svg/2048px-Notepad_icon.svg.png" type="image/x-icon">
+    <style>
+        /* Reset some default browser styles */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            background: rgba(255,255,255,0);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-right: 10px;
+        }
+
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            display: inline-block;
+            padding: 10px 15px;
+            background: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Style the Home and About Us links as black */
+        nav ul li a[href="/"],
+        nav ul li a[href="/about"] {
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-top: 50px; /* Adjust the margin for content below the navbar */
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        /* Add more styles specific to the homepage content here */
+
+        /* Separate the navigation and login/signup links */
+        nav ul:first-child {
+            margin-right: 20px;
+        }
+
+        /* Match button style with the About Us page */
+        nav ul:last-child li a {
+            background: #007bff;
+        }
+
+        nav ul:last-child li a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body style="background-image: url('https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png'); background-size: cover;">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+            </ul>
+        </nav>
+        <nav>
+            <ul>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Welcome to NotePad2-</h1>
+        <p>The all-in-one notepad experience.
+				
+				
+				
+				
+				
+				We're better than NotePad+</p>
+        <!-- Add more content specific to the homepage here -->
+    </div>
+</body>
+</html>

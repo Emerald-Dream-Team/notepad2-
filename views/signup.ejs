@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+	<link rel="icon" href= "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Notepad_icon.svg/2048px-Notepad_icon.svg.png" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/styles.css">
+	<style>
+			/* Reset some default browser styles */
+			body, h1, p {
+					margin: 0;
+					padding: 0;
+			}
+
+			body {
+					font-family: Arial, sans-serif;
+					background: none;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					height: 100vh;
+					margin: 0;
+			}
+
+			header {
+					background: rgba(255,255,255,0);
+					color: #fff;
+					display: flex;
+					justify-content: space-between;
+					padding: 10px;
+					position: fixed;
+					top: 0;
+					width: 100%;
+			}
+
+			nav ul {
+					list-style: none;
+					display: flex;
+					align-items: center;
+			}
+
+			nav ul li {
+					margin-right: 10px;
+			}
+
+			nav ul li:last-child {
+					margin-right: 0;
+			}
+
+			nav ul li a {
+					text-decoration: none;
+					color: #fff;
+					font-weight: bold;
+					display: inline-block;
+					padding: 10px 15px;
+					background: #007bff;
+					border-radius: 5px;
+					transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+			}
+
+			nav ul li a:hover {
+					background-color: #0056b3;
+					transform: scale(1.05);
+			}
+
+			/* Style the Home and About Us links as black */
+			nav ul li a[href="/"],
+			nav ul li a[href="/about"] {
+					color: #fff;
+			}
+
+			.container {
+					text-align: center;
+					background-color: rgba(255, 255, 255, 0.7);
+					border-radius: 5px;
+					padding: 20px;
+					box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+					margin-top: 50px; /* Adjust the margin for content below the navbar */
+			}
+
+			h1 {
+					font-size: 24px;
+					margin-bottom: 20px;
+			}
+
+			p {
+					font-size: 16px;
+			}
+
+			/* Add more styles specific to the homepage content here */
+
+			/* Separate the navigation and login/signup links */
+			nav ul:first-child {
+					margin-right: 20px;
+			}
+
+			/* Match button style with the About Us page */
+			nav ul:last-child li a {
+					background: #007bff;
+			}
+
+			nav ul:last-child li a:hover {
+					background-color: #0056b3;
+			}
+			/* CSS for the notification container */
+			.error-container {
+				position: fixed;
+				bottom: 20px;
+				right: 20px; /* Adjust the position as needed */
+				background-color: #ff3333; /* Red background color */
+				color: #fff; /* White text color */
+				padding: 10px 20px; /* Padding around the text */
+				border-radius: 5px; /* Rounded corners */
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
+				z-index: 1000; /* Ensure it appears on top of other content */
+			}
+	</style>
+</head>
+<body style="background-image: url('https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png'); background-size: cover;">
+		<header>
+				<nav>
+						<ul>
+								<li><a href="/">Home</a></li>
+								<li><a href="/about">About Us</a></li>
+						</ul>
+				</nav>
+				<nav>
+						<ul>
+								<li><a href="/login">Login</a></li>
+								<li><a href="/signup">Sign Up</a></li>
+						</ul>
+				</nav>
+		</header>
+	<div id="error-container" class="error-container" style="display: none">
+		<p id="error-message"></p>
+	</div>
+	<div class="container">
+        <h1>Sign Up</h1>
+        <form action="/signup" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p class="login-link">Already have an account? <a href="/login">Login</a></p>
+    </div>
+					<!-- Inside login.ejs and signup.ejs -->
+					<% if (message) { %>
+						<script>
+							const errorMessage = "<%- message %>";
+							const errorContainer = document.getElementById('error-container');
+							const errorMessageElement = document.getElementById('error-message');
+
+							errorMessageElement.textContent = errorMessage;
+							errorContainer.style.display = 'block';
+
+							// Hide the error container after a few seconds (adjust the timeout as needed)
+							setTimeout(() => {
+								errorContainer.style.display = 'none';
+							}, 3000); // Hides the message after 3 seconds
+						</script>
+					<% } %>
+</body>
+</html>

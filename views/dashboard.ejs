@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+	<link rel="icon" href= "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Notepad_icon.svg/2048px-Notepad_icon.svg.png" type="image/x-icon">
+	<link rel="stylesheet" href="/styles.css">
+</head>
+<body style="background-image: url('https://coolbackgrounds.io/images/backgrounds/index/sea-edge-79ab30e2.png'); background-size: cover;">
+    <div class="container">
+        <div class="dashboard">
+            <div class="notepad-container">
+                <h2>Notepad2-</h2>
+                <textarea id="notepad-content" rows="10" cols="50" placeholder="Write your notes here..."></textarea>
+                <button id="save-button">Save</button>
+                <button class="logout-button" id="logout-button">Logout</button>
+            </div>
+        </div>
+        <div id="notification-container" class="notification-container"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const notepadContent = document.getElementById('notepad-content');
+            const saveButton = document.getElementById('save-button');
+            const logoutButton = document.getElementById('logout-button');
+            const notificationContainer = document.getElementById('notification-container');
+
+            // Fetch and display the saved notepad content on page load
+            fetch('/get-notepad')
+                .then(response => response.text())
+                .then(content => {
+                    notepadContent.value = content;
+                });
+
+            saveButton.addEventListener('click', function() {
+                const content = notepadContent.value;
+
+                // Send the content to the server for saving
+                fetch('/save-notepad', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ content }),
+                })
+                .then(response => {
+                    if (response.ok) {
+                        showNotification('Note saved successfully');
+                    } else {
+                        showNotification('Failed to save notes', 'red');
+                    }
+                });
+            });
+
+            logoutButton.addEventListener('click', function() {
+                // Redirect to the logout route
+                window.location.href = '/logout';
+            });
+
+            function showNotification(message, color) {
+                notificationContainer.textContent = message;
+                notificationContainer.style.backgroundColor = color;
+                notificationContainer.style.display = 'block';
+                setTimeout(function () {
+                    notificationContainer.style.display = 'none';
+                }, 3000); // Hide the notification after 3 seconds
+            }
+        });
+    </script>
+</body>
+</html>
